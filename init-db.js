@@ -38,7 +38,7 @@ async function initAdvert() {
       "tags": ["lifestyle", "motor"]
     },
     {
-      "name": "iPhone 3GS",
+      "name": "iPhone 11",
       "sale": false,
       "price": 50.00,
       "photo": "iphone.png",
