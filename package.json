@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon src/index.js"
+    "start": "node ./bin/www",
+    "init-db": "node init-db.js",
+    "dev": "SET DEBUG=nodepop:* & npm start"
   },
   "keywords": [],
   "author": "",
