@@ -81,7 +81,7 @@ router.get('/:id', async (req, res, next) => {
   }
 });
 
-// GET /api/adverts/tags
+// GET /api/advert/tags
 router.get('/tags', function (req, res, next) {
   Advert.distinct("tags", function (err, tags) {
     res.send({ availableTags: tags });
@@ -99,7 +99,7 @@ router.get('/tags', function (req, res, next) {
   }
 });*/
 
-// PUT /api/adverts/(id) (body = advertData)
+// PUT /api/advert/(id) (body = advertData)
 // update and advert
 router.put('/:id', async (req, res, next) => {
   try {
@@ -115,7 +115,7 @@ router.put('/:id', async (req, res, next) => {
   }
 });
 
-// POST /api/adverts (body = advertData)
+// POST /api/advert (body = advertData)
 router.post('/', async (req, res, next) => {
   try {
     const advertData = req.body;
@@ -131,7 +131,7 @@ router.post('/', async (req, res, next) => {
   }
 });
 
-// DELETE /api/adverts/:id
+// DELETE /api/advert/:id
 router.delete('/:id', async (req, res, next) => {
   try {
     const id = req.params.id;

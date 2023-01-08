@@ -1,22 +1,41 @@
 {
   "name": "web-api",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "private": true,
   "scripts": {
-    "start": "node ./bin/www"
+    "start": "node ./bin/www",
+    "dev": "cross-env DEBUG=nodepop:* nodemon ./bin/www",
+    "init-db": "node init-db.js"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
   "dependencies": {
+    "axios": "^1.2.2",
     "cookie-parser": "^1.4.6",
+    "cross-env": "^7.0.3",
     "dotenv": "^16.0.3",
+    "ejs": "^3.1.8",
     "express": "^4.18.2",
+    "http-errors": "^2.0.0",
+    "mongodb": "^4.13.0",
     "mongoose": "^6.8.2",
     "morgan": "^1.10.0"
   },
   "devDependencies": {
     "nodemon": "^2.0.20"
-  }
+  },
+  "description": "WEB-API project to develop an API that will run on a server of a second-hand goods sale service called Nodepop. The idea is that this API would be used by other iOS or Android developers. The service maintains advertisements for buying or selling items and allows you to search as you put filters by various criteria.",
+  "main": "app.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gracevivian04/NodePop.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gracevivian04/NodePop/issues"
+  },
+  "homepage": "https://github.com/gracevivian04/NodePop#readme"
 }
