@@ -41,7 +41,5 @@ GET /api/adverts
       "tags": ["lifestyle", "mobile"]
     }`
 
-### Filter examples: 
-
 
 
