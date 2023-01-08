@@ -6,7 +6,7 @@ const Advert = require('../../models/ads');
 
 const router = express.Router();
 
-// CRUD
+// CRUD - Create, Read, Update, Delete
 
 // GET api/adverts
 // return ad listings
@@ -17,7 +17,7 @@ router.get('/', async (req, res, next) => {
     const sale = req.query.sale;
     const price = req.query.price;
     const photo = req.query.photo;
-    const tags = req.query.tags;
+    const tag = req.query.tag;
 
     // webpage
     const skip = req.query.skip;
@@ -58,8 +58,8 @@ router.get('/', async (req, res, next) => {
       filter.photo = photo;
     }
 
-    if (tags) {
-      filter.tags = tags;
+    if (tag) {
+      filter.tags = tag;
     }
 
     const adverts = await Advert.list(filter, skip, limit, fields, sort);
@@ -82,8 +82,13 @@ router.get('/:id', async (req, res, next) => {
 });
 
 // GET /api/adverts/tags
-router.get('/tags', async (req, res, next) => {
-  try {
+router.get('/tags', function (req, res, next) {
+  Advert.distinct("tags", function (err, tags) {
+    res.send({ availableTags: tags });
+  });
+});
+ 
+  /* try {
     const tag = req.query.tag;
 
     // search for a tag in the database 
@@ -92,7 +97,7 @@ router.get('/tags', async (req, res, next) => {
   } catch (err) {
     next(err);
   }
-});
+});*/
 
 // PUT /api/adverts/(id) (body = advertData)
 // update and advert
@@ -142,9 +147,6 @@ router.delete('/:id', async (req, res, next) => {
   }
 });
 
-/*/ create listing
-router.post('/adverts', (req, res) => {
-  res.send('create listing');
-}); */
+
 
 module.exports = router;

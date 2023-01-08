@@ -7,5 +7,64 @@
   <body>
     <h1><%= title %></h1>
     <p>Welcome to <%= title %></p>
+    <p>This is a WEB-API project to develop an API that will run on a server of a second-hand goods sale service called Nodepop. The idea is that this API would be used by other iOS or Android developers. The service maintains advertisements for buying or selling items and allows you to search as you put filters by various criteria. It also allows you to store information in a MongoDB database.</p>
+    <h2>Install MongoDB</h2>
+    <p>You need to have MongoDB installed in your server for this API to work. You can download it, install it and make sure it's running in your system here: <a href="https://www.mongodb.com/try/download/community">https://www.mongodb.com/try/download/community</a></p>
+    <h3>To Deploy</h3>
+    <pre><code>npm install</code></pre>
+    <h3>To load initial data to database</h3>
+    <pre><code> npm run init -db</code></pre>
+    <h3>To start application in development</h3>
+    <pre><code>npm run dev </code></pre>
+    <h3>To start application in production</h3>
+    <pre><code>npm start</code></pre>
+    <p>
+      The API will run at <code>http://localhost:9000</code> by default. You can
+      change the port in <code>/bin/www.js</code> at line 15.
+    </p>
+    <h4>Available Parameters</h4>
+    <details>
+      <summary>Click to open</summary>
+      <ul>
+        <li>
+          Tag
+          <ul>
+            <li>
+              Description: Search by tag. You can get a list of all available
+              tags at: <code>GET api/tags</code>.
+            </li>
+          </ul>
+        </li>
+        <li>
+          Sale
+          <ul>
+            <li>
+              Description: Search by status. Is the item being sold (true) or is it being searched for (false)?
+            </li>
+          </ul>
+        </li>
+        <li>
+          Price
+          <ul>
+            <li>
+              Description: Search by exact price or set a price range. Price ranges you can set are: between values(e.g 5-10), greater than value (e.g 5-), lower than value (e.g -30) or the exact value (e.g 20).
+            </li>
+          </ul>
+        </li>
+        <li>
+          Item name
+          <ul>
+            <li>
+              Description: Search by item name. Any strings that
+              start with the query text will match.
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <h4>Expected Errors</h4>
+      <ul>
+        <li></li>
+      </ul>
+    </details>
   </body>
 </html>

@@ -2,27 +2,36 @@
 
 const mongoose = require('mongoose');
 
+// define ad schema 
 const advertSchema = mongoose.Schema({
+  // all properties are required 
   name: {
-    type: String
+    type: String,
+    index: true,
+    required: true
   },
   sale: {
-    type: Boolean
+    type: Boolean, 
+    required: true
   },
   price: {
-    type: Number
+    type: Number,
+    required: true
   },
   photo: {
-    type: String
+    type: String,
+    required: true,
+    unique: true
   },
   tags: {
-    type: [String]
+    type: [String],
+    required: true
   }
 },
 { collection: 'adverts'});
 
-// model 
+// create model 
 const Advert = mongoose.model('Advert', advertSchema);
 
 // export model 
-module.exports = Advert
+module.exports = Advert;

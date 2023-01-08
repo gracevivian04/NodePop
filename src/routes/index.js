@@ -1,4 +1,14 @@
 const express = require('express');
+const router = express.Router();
+
+/* GET home page. */
+router.get('/', function(req, res, next) {
+  res.render('index', { title: 'Nodepop' });
+});
+
+module.exports = router;
+
+/* const express = require('express');
 const mongoose = require('mongoose');
 require('dotenv').config();
 const adRoutes = require('./routes/advert');
@@ -21,4 +31,4 @@ mongoose.connect(process.env.MONGODB_URI)
   .then(() => console.log('connected to MongoDB atlas'))
   .catch((error) => console.error(error));
 
-app.listen(port, () => console.log('server listening on port', port));
+app.listen(port, () => console.log('server listening on port', port));*/

@@ -1,24 +1,26 @@
-const { connection } = require('mongoose');
 const readline = require('readline');
 
 // load model ads 
 const Advert = require('./src/models/ads');
 
+// import JSON file
+const jsonFile = require('./adverts.json');
+
 async function main() {
   // ask security question to user 
-  const continueToDelete = await yesNoQ('Are you sure you want to delete the database?')
+  const continueToDelete = await confirmContinuation('Are you sure you want to delete the database?');
   if(!continueToDelete) {
     process.exit();
   }
 
-  /* / connect to the database 
-  const connectToDB = require -- need to complete */
+  // connect to the database 
+  const connectToDB = require('./lib/connectMongoose');
 
   // start ad collection 
   await initAdvert();
 
   // disconnect database 
-  connection.close();
+  connectToDB.close();
 }
 
 main().catch(error => console.log("There's been an error", error));
@@ -29,26 +31,11 @@ async function initAdvert() {
   console.log(`${result.deletedCount} ads deleted.`)
 
   // create initial ads
-  const initialAds = await Advert.insertMany([
-    {
-      "name": "Bicycle",
-      "sale": true,
-      "price": 230.15,
-      "photo": "bici.png",
-      "tags": ["lifestyle", "motor"]
-    },
-    {
-      "name": "iPhone 11",
-      "sale": false,
-      "price": 50.00,
-      "photo": "iphone.png",
-      "tags": ["lifestyle", "mobile"]
-    }
-  ]);
-  console.log(`${inserted.length} ads created.`)
+  const initialAds = await Advert.insertMany(jsonFile.adverts);
+  console.log(`${initialAds.length} ads created.`)
 }
 
-function yesNoQ(text) {
+function confirmContinuation(text) {
   return new Promise((resolve, reject) => {
     const interface = readline.createInterface({
       input: process.stdin,
@@ -61,6 +48,6 @@ function yesNoQ(text) {
         return;
       }
       resolve(false);
-    })
-  })
+    });
+  });
 }
